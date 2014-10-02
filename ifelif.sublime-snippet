@@ -1,0 +1,12 @@
+<snippet>
+	<content><![CDATA[
+if ${1:true}
+	$2
+elif ${3:true}
+	$4
+;
+]]></content>
+	<tabTrigger>ifelif</tabTrigger>
+	<description>if..elif condition</description>
+	<scope>source.mini</scope>
+</snippet>

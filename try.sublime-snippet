@@ -1,0 +1,12 @@
+<snippet>
+	<content><![CDATA[
+try
+	$1
+catch ${2:err}
+	$3
+;
+]]></content>
+	<tabTrigger>try</tabTrigger>
+	<description>try..catch structure</description>
+	<scope>source.mini</scope>
+</snippet>

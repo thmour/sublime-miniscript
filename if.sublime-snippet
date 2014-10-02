@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[
+if ${1:true}
+	$2
+;
+]]></content>
+	<tabTrigger>if</tabTrigger>
+	<description>if condition</description>
+	<scope>source.mini</scope>
+</snippet>

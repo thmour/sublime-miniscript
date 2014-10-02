@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[
+while ${1:true}
+	$2
+;
+]]></content>
+	<tabTrigger>while</tabTrigger>
+	<description>while loop</description>
+	<scope>source.mini</scope>
+</snippet>

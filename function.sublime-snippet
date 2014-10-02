@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[
+${1:funcname} = # ${2:params} {
+	$3
+}
+]]></content>
+	<tabTrigger>function</tabTrigger>
+	<description>basic function declaration</description>
+	<scope>source.mini</scope>
+</snippet>
