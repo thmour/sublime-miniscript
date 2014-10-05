@@ -187,6 +187,12 @@
 			<string>support.class.mini</string>
 		</dict>
 		<dict>
+			<key>match</key>
+			<string>\${1,2}[_a-zA-Z]*|[_a-z][_a-zA-Z]*</string>
+			<key>name</key>
+			<string>entity.name.type.mini</string>
+		</dict>
+		<dict>
 			<key>begin</key>
 			<string>(/)(?![*/+{}?])</string>
 			<key>beginCaptures</key>
@@ -527,7 +533,7 @@
 		<key>variable</key>
 		<dict>
 			<key>match</key>
-			<string>[_$]?[_$a-z][_a-z]*</string>
+			<string>\${1,2}[_a-zA-Z]*|[_a-z][_a-zA-Z]*</string>
 			<key>name</key>
 			<string>entity.name.type.mini</string>
 		</dict>
