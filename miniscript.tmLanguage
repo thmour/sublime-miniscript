@@ -36,19 +36,19 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>,\s*</string>
+			<string>,</string>
 			<key>name</key>
 			<string>meta.delimiter.object.comma.mini</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\b(Infinity|NaN|undefined)\b</string>
+			<string>\b(Infinity|NaN|undefined|nil)\b</string>
 			<key>name</key>
 			<string>constant.language.mini</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\|\||\||&amp;&amp;|&amp;|\+\+|\+|\-\-|\-|\*|~|!==|===|==|!=|&lt;=|&gt;=|&lt;&lt;=|&gt;&gt;=|&gt;&gt;&gt;=|\+=|\-=|&amp;=|\|=|\^=|=|&lt;|&gt;|=|\b(in|of|instanceof|new|delete|typeof|and|or|is not|is|not|as)\b</string>
+			<string>\|\||\||&amp;&amp;|&amp;|\+\+|\+|\-\-|\-|\*|~|!==|===|==|!=|&lt;=|&gt;=|&lt;&lt;=|&gt;&gt;=|&gt;&gt;&gt;=|\+=|\-=|&amp;=|\|=|\^=|=|&lt;|&gt;|=|\b(in|of|instanceof|delete|typeof|and|or|is not|is|not|as|to|until|by)\b</string>
 			<key>name</key>
 			<string>keyword.operator.mini</string>
 		</dict>
@@ -72,13 +72,19 @@
 		</dict>
 		<dict>
 			<key>match</key>
+			<string>\bsuper\b</string>
+			<key>name</key>
+			<string>variable.language.super.mini</string>
+		</dict>
+		<dict>
+			<key>match</key>
 			<string>\bthis\b</string>
 			<key>name</key>
 			<string>variable.language.this.mini</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\b(case|catch|default|do|elif|else|finally|for|if|import|return|switch|throw|try|while|print|super|exit|repeat|times)\b</string>
+			<string>\b(case|catch|default|do|elif|else|finally|for|if|import|return|switch|throw|try|while|print|end|times|export|index|each|break|continue|write)\b</string>
 			<key>name</key>
 			<string>keyword.control.mini</string>
 		</dict>
@@ -87,6 +93,12 @@
 			<string>\;</string>
 			<key>name</key>
 			<string>keyword.control.mini</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>[0-9]+(\.[0-9]+)?e[-\+]?[0-9]+</string>
+			<key>name</key>
+			<string>constant.numeric.mini</string>
 		</dict>
 		<dict>
 			<key>begin</key>
@@ -135,13 +147,32 @@
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>entity.name.type.instance.mini</string>
+					<string>support.class.mini</string>
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>\b(new)\b\s+(\w+(?:\.\w*)?)</string>
+			<string>\b(new)\b\s+(\w+)\s*\(</string>
 			<key>name</key>
 			<string>meta.class.instance.constructor.mini</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>variable.language.this.mini</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>variable.parameter.function.mini</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(?:(?:(this)|([$_a-zA-Z0-9]+))(?:,\s*)?)*\s*=&gt;</string>
+			<key>name</key>
+			<string>meta.function.mini</string>
 		</dict>
 		<dict>
 			<key>captures</key>
@@ -163,7 +194,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>#()([^{]*)()(?={)</string>
+			<string>(\()([^){]*)(\))\s*(?=\{|=&gt;)|</string>
 			<key>name</key>
 			<string>meta.function.mini</string>
 		</dict>
@@ -175,17 +206,36 @@
 					<key>name</key>
 					<string>entity.name.function.mini</string>
 				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.parameters.begin.mini</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>variable.parameter.function.mini</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.parameters.end.mini</string>
+				</dict>
+				<key>5</key>
+				<dict>
+					<key>name</key>
+					<string>variable.language.this.mini</string>
+				</dict>
+				<key>6</key>
+				<dict>
+					<key>name</key>
+					<string>variable.parameter.function.mini</string>
+				</dict>
 			</dict>
 			<key>match</key>
-			<string>([a-z]+)\s*[:=]\s*(?=#)</string>
+			<string>([$_a-zA-Z0-9]+)\s*=\s*(?:(\()([^){]*)(\))\s*(?:\{|=&gt;)|(?:(this)|([$_a-zA-Z0-9]+))?\s*=&gt;)</string>
 			<key>name</key>
 			<string>meta.function.mini</string>
-		</dict>
-		<dict>
-			<key>match</key>
-			<string>\b[A-Z][A-Za-z]*\b</string>
-			<key>name</key>
-			<string>support.class.mini</string>
 		</dict>
 		<dict>
 			<key>begin</key>
@@ -231,7 +281,7 @@
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>entity.name.type.mini</string>
+					<string>support.class.mini</string>
 				</dict>
 				<key>3</key>
 				<dict>
@@ -270,7 +320,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>\b(class)\b\s*([A-Z][A-Za-z]*)(?:\s*:\s*([A-Z][A-Za-z]*))?(?:\s*(?:(\()([^)]+)(\))|({)([^}]+)(})))?</string>
+			<string>\b(class|type)\b\s*([$_a-zA-Z0-9]*)(?:\s*:\s*([$_a-zA-Z0-9]*))?(?:\s*(?:(\()([^)]+)(\))|({)([^}]+)(})))?</string>
 			<key>name</key>
 			<string>meta.class.mini</string>
 		</dict>
@@ -388,7 +438,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\b(ELEMENT_NODE|ATTRIBUTE_NODE|TEXT_NODE|CDATA_SECTION_NODE|ENTITY_REFERENCE_NODE|ENTITY_NODE|PROCESSING_INSTRUCTION_NODE|COMMENT_NODE|DOCUMENT_NODE|DOCUMENT_TYPE_NODE|DOCUMENT_FRAGMENT_NODE|NOTATION_NODE|INDEX_SIZE_ERR|DOMSTRING_SIZE_ERR|HIERARCHY_REQUEST_ERR|WRONG_DOCUMENT_ERR|INVALID_CHARACTER_ERR|NO_DATA_ALLOWED_ERR|NO_MODIFICATION_ALLOWED_ERR|NOT_FOUND_ERR|NOT_SUPPORTED_ERR|INUSE_ATTRIBUTE_ERR)\b</string>
+			<string>\b(ELEMENT_NODE|ATTRIBUTE_NODE|TEXT_NODE|CDATA_SECTION_NODE|ENTITY_REFERENCE_NODE|ENTITY_NODE|PROCESSING_INSTRUCTION_NODE|COMMENT_NODE|DOCUMENT_NODE|DOCUMENT_TYPE_NODE|DOCUMENT_FRAGMENT_NODE|NOTATION_NODE|INDEX_SIZE_ERR|DOminiTRING_SIZE_ERR|HIERARCHY_REQUEST_ERR|WRONG_DOCUMENT_ERR|INVALID_CHARACTER_ERR|NO_DATA_ALLOWED_ERR|NO_MODIFICATION_ALLOWED_ERR|NOT_FOUND_ERR|NOT_SUPPORTED_ERR|INUSE_ATTRIBUTE_ERR)\b</string>
 			<key>name</key>
 			<string>support.constant.dom.mini</string>
 		</dict>
@@ -586,7 +636,7 @@
 		<key>variable</key>
 		<dict>
 			<key>match</key>
-			<string>\${1,2}[_a-zA-Z]*|[_a-z][_a-zA-Z]*</string>
+			<string>[$_a-zA-Z][_a-zA-Z0-9]*</string>
 			<key>name</key>
 			<string>entity.name.type.mini</string>
 		</dict>
