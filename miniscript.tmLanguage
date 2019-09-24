@@ -84,7 +84,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\b(case|catch|default|do|elif|else|finally|for|if|then|import|return|switch|throw|try|while|print|end|times|export|index|each|break|continue|write)\b</string>
+			<string>\b(case|catch|default|do|elif|else|finally|for|if|import|return|switch|throw|try|while|print|end|times|export|index|each|break|continue|write)\b</string>
 			<key>name</key>
 			<string>keyword.control.mini</string>
 		</dict>
